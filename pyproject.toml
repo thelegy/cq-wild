@@ -1,0 +1,13 @@
+[project]
+name = "cq-wild"
+dependencies = [
+  "cadquery",
+]
+dynamic = ["version", "readme"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+namespaces = false
+
+[tool.setuptools.dynamic]
+readme = {file = ["README.md"]}
