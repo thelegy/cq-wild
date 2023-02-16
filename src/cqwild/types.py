@@ -21,6 +21,9 @@ class Sketch(cq.Sketch):
     def apply(self: 'Sketch', fn: Callable[Concatenate['Sketch', P], X], *args: P.args, **kwargs: P.kwargs) -> X:
         return fn(self, *args, **kwargs)
 
+    def applyCQ(self: 'Sketch', fn: Callable[Concatenate['Sketch', P], cq.Sketch], *args: P.args, **kwargs: P.kwargs) -> 'Sketch':
+        return self._fromCQ(fn(self, *args, **kwargs))
+
 
 class Workplane(cq.Workplane):
 
@@ -31,6 +34,9 @@ class Workplane(cq.Workplane):
 
     def apply(self: 'Workplane', fn: Callable[Concatenate['Workplane', P], X], *args: P.args, **kwargs: P.kwargs) -> X:
         return fn(self, *args, **kwargs)
+
+    def applyCQ(self: 'Workplane', fn: Callable[Concatenate['Workplane', P], cq.Workplane], *args: P.args, **kwargs: P.kwargs) -> 'Workplane':
+        return self._fromCQ(fn(self, *args, **kwargs))
 
     def workplaneFromTagged(self: 'Workplane', workplaneName: str) -> 'Workplane':
         return self._fromCQ(super().workplaneFromTagged(workplaneName))
