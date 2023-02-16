@@ -1,4 +1,5 @@
 from cadquery import *
+from cadquery.cq import CQObject
 
 from .types import Sketch
 from .types import Workplane
